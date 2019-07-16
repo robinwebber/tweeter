@@ -1,0 +1,28 @@
+.new-tweet {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+#submit-tweet-button{
+  font-family: 'Bungee', cursive;
+  background-color: #4056A1;
+  color: #FFFFFF;
+}
+
+#character-counter {
+
+  float: right;
+  font-family: 'Bungee', cursive;
+}
+
+#write-tweet-box{
+  font-weight: bold;
+  background-color: #f4f1ec;
+  width: 100%;
+ border: none;
+ border-bottom:solid  5px;
+ margin-bottom: 10px;
+ text-align: left;
+}
+
