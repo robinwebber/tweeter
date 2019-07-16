@@ -1,7 +1,6 @@
 .new-tweet {
   width: 100%;
   margin: 0 auto;
-  
 }
 
 #submit-tweet-button{
@@ -11,7 +10,6 @@
 }
 
 #character-counter {
-
   float: right;
   font-family: 'Bungee', cursive;
 }
@@ -26,3 +24,6 @@
  text-align: left;
 }
 
+.has-error {
+  color: red;
+}
