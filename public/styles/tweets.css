@@ -1,0 +1,61 @@
+.tweetcontainer {
+  /* background-color: lightblue; */
+}
+
+.tweet-box header {
+  padding-bottom: 5px;
+  /* background-color: lightcoral; */
+}
+
+.tweet-box {
+  border-style: solid;
+
+}
+.tweet-box:hover {
+  box-shadow: 10px 10px 5px lightgray;
+  color: #545149;
+  font-weight: bold;
+}
+
+.tweet-box .tweeter-handle:hover {
+  color: #545149;
+}
+
+.tweeter-handle {
+  float: right;
+  padding-top: 10px;
+  padding-right: 10px;
+  color: transparent;
+}
+
+.profile-pic {
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  height: 40px;
+  width: auto;
+}
+
+.username {
+  padding-top: 15px;
+  float: left;
+  padding-left: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.timestamp {
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.tweet-box footer {
+  border-top: 4px #545149 solid;
+  /* background-color: lightgreen; */
+}
+
+.tweet-content {
+  padding-left: 10px;
+}
