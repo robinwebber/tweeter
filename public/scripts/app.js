@@ -98,7 +98,22 @@ const renderTweets = function(tweets) {
 
 const loadTweets = function () {
   $.get('/tweets', function(data) {
+    //console.log(data);
     renderTweets(data);
+  })
+}
+// const loadTweets = function() {
+//   $.get("/tweets").done(function(tweets) {
+//     renderTweets(tweets);
+//   });
+// };
+const refreshTweets = function () {
+  $.get('/tweets').done(function(data) {
+    let tweetToRender = [];
+    tweetToRender.push(data[data.length-1])
+    //console.log('data', data)
+    //console.log('tweetToRender', tweetToRender);
+    renderTweets(tweetToRender);
   })
 }
 
@@ -108,10 +123,11 @@ $('document').ready(function() {
 
   const $tweetform = $('.new-tweet-form');
   $tweetform.on('submit', function (event) {
+
     event.preventDefault();
     let formText = $(event.target).serialize();
     let formLength = $(event.target).find('textarea').val().length
-    console.log(formLength);
+    
     if (formLength <= 0) {
       alert('yo tweet is empty');
     } else if (formLength > 140) {
@@ -119,12 +135,19 @@ $('document').ready(function() {
       alert('that tweet is too big')
     } else {
       
-      $.post("/tweets", formText);
-      $('textarea').val('');
-      $('#character-counter').text('140');
+      $.post("/tweets", formText).then(() => {
+        $('textarea').val('');
+        $('#character-counter').text('140');
+        refreshTweets();
+
+      })
+
+
+      
     }
-    console.log(formText);
+    //console.log(formText);
   })
+  
   //renderTweets(data);
 });
 
