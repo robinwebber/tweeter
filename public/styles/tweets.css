@@ -11,15 +11,6 @@
   border-style: solid;
 
 }
-.tweet-box:hover {
-  box-shadow: 10px 10px 5px lightgray;
-  color: #545149;
-  font-weight: bold;
-}
-
-.tweet-box .tweeter-handle:hover {
-  color: #545149;
-}
 
 .tweeter-handle {
   float: right;
@@ -27,6 +18,15 @@
   padding-right: 10px;
   color: transparent;
 }
+
+.tweet-box:hover {
+  box-shadow: 10px 10px 5px lightgray;
+  color: #545149;
+  font-weight: bold;
+  
+
+}
+
 
 .profile-pic {
   float: left;

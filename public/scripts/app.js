@@ -5,6 +5,30 @@
  */
 
 
+const data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": "https://i.imgur.com/73hZDYK.png"
+      ,
+      "handle": "@SirIsaac"
+    },
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
+  },
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": "https://i.imgur.com/nlhLi3I.png",
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  }
+]
 /* <article class="tweet-box">
         
         <header>
@@ -27,35 +51,60 @@
       </article> */
 
 const createTweetElement = function(obj) {
-  const $article = $('<article>');
-  const $header = $('<header>');
-  const $divhandle = $('<div class="tweeter-handle">').text(obj.user.handle).appendTo($header);
-  const $img = $('<img class="profile-pic">')
+  // Creating elements
+  let $tweetBox = $('<article>');
+  let $header = $('<header>');
+  let $tweeterHandle = $('<div>');
+  let $profilePic = $(`<img>`);
+  let $username = $('<div>')
+  let $clear = $('<div>');
+  let $tweetContent = $('<p>');
+  let $footer = $('<footer>');
+  let $timeStamp = $('<p>');
 
+  // Assigning classes to elements
+  $tweetBox.addClass('tweet-box');
+  $tweeterHandle.addClass('tweeter-handle');
+  $profilePic.addClass('profile-pic');
+  $username.addClass('username');
+  $clear.addClass('clear');
+  $tweetContent.addClass('tweet-content');
+  $timeStamp.addClass('timestamp');
+
+  // Adding content to the elements
+  $tweeterHandle.text(obj.user.handle);
+  $profilePic.attr(`src`, obj['user'].avatars)
+  $username.text(obj.user.name);
+  $tweetContent.text(obj.content.text);
+  $footer.text(obj.created_at);
+
+  // Build the element
+  $header.append($tweeterHandle).append($profilePic).append($username);
+  
+  $tweetBox.append($header).append($clear).append($tweetContent);
+
+  $footer.append($timeStamp);
+
+  $tweetBox.append($footer);
+
+  // Return the build
+  return $tweetBox;
 
 };
 
+const renderTweets = function(tweets) {
 
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}
-
-// $('document').ready(function() {
-//   const $tweet = createTweetElement(tweetData);
-//   $('#tweetcontainer').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-// });
-
-const $tweet = createTweetElement(tweetData);
+    for (tweet of tweets) {
+      $('.tweetcontainer').append(createTweetElement(tweet));
+    }
+};
 
 
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like
+
+$('document').ready(function() {
+  
+  
+  renderTweets(data);
+  
+});
+
