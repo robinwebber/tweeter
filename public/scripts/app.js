@@ -5,30 +5,30 @@
  */
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ]
 /* <article class="tweet-box">
         
         <header>
@@ -76,35 +76,52 @@ const createTweetElement = function(obj) {
   $profilePic.attr(`src`, obj['user'].avatars)
   $username.text(obj.user.name);
   $tweetContent.text(obj.content.text);
+  $timeStamp.text(new Date(obj.created_at));
   $footer.text(obj.created_at);
 
   // Build the element
   $header.append($tweeterHandle).append($profilePic).append($username);
-  
   $tweetBox.append($header).append($clear).append($tweetContent);
-
   $footer.append($timeStamp);
-
   $tweetBox.append($footer);
 
   // Return the build
   return $tweetBox;
-
 };
 
 const renderTweets = function(tweets) {
-
     for (tweet of tweets) {
       $('.tweetcontainer').append(createTweetElement(tweet));
     }
 };
 
+$(function() {
+  const $tweetform = $('.new-tweet-form');
+  $tweetform.on('submit', function (event) {
+    event.preventDefault();
+    let formText = $(this).serialize();
+    if ((formText.length -5) <= 0) {
+      console.log('error');
+    } else {
+      
+      $.post("/tweets", formText);
+      $('textarea').val('');
+      $('#character-counter').text('140');
+    }
+    console.log(formText);
+  })
 
+});
+
+const loadTweets = function () {
+  $.get('/tweets', function(data) {
+    renderTweets(data);
+  })
+}
 
 $('document').ready(function() {
-  
-  
-  renderTweets(data);
-  
+  loadTweets();
+  //renderTweets(data);
 });
+
 
