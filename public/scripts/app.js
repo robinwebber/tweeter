@@ -94,7 +94,7 @@ const createTweetElement = function(obj) {
 
 const renderTweets = function(tweets) {
     for (tweet of tweets) {
-      $('.tweetcontainer').append(createTweetElement(tweet));
+      $('.tweetcontainer').prepend(createTweetElement(tweet));
     }
 };
 
@@ -153,6 +153,8 @@ $('document').ready(function() {
     }
   })
   
+  $(".new-tweet").hide();
+
   $( "#clickhere" ).click(function() {
     $( ".new-tweet" ).slideToggle( "slow", function() {
     });

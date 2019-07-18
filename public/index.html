@@ -30,6 +30,8 @@
   <script type="text/javascript" src="/scripts/compose-char-counter.js"></script>
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/ae973c3081.js"></script>
+  <!--No viewport zooming-->
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
 </head>
 
@@ -58,7 +60,7 @@
       <h2>Compose Tweet</h2>
       <form class="new-tweet-form" action="/tweets/" method="POST">
 
-        <textarea name="text" id="write-tweet-box" placeholder="What are you humming about?"></textarea>
+        <textarea name="text" id="write-tweet-box" placeholder="What's the word on the TWEET?"></textarea>
 
         <input type="submit" id="submit-tweet-button" value="Tweet">
 
@@ -69,7 +71,7 @@
     <section class="tweetcontainer">
 
       
-      </article>
+      
       
     </section>
   </main>
