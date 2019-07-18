@@ -5,7 +5,6 @@
  */
 
 // The below function (createTweetElement) creates Tweets from information supplied by the server
-
 const createTweetElement = function(obj) {
   // Creating elements
   let $tweetBox = $('<article>');

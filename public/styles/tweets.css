@@ -1,11 +1,11 @@
+/* CSS for everything inside the tweets */
+
 .tweetcontainer {
   margin-top: 1em;
 }
 
 .tweet-box header {
   padding-bottom: 5px;
-  
-  /* background-color: lightcoral; */
 }
 
 .tweet-box {

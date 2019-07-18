@@ -1,3 +1,5 @@
+/* navbar CSS */
+
 nav {
   position: fixed;
   top: 0;
@@ -30,8 +32,3 @@ nav container i {
 font-size: 36px;
 
 }
-/* .navbar{
-  background-color: #4056A1;
-  font-family: 'Bungee', cursive;
-  color: #FFFFFF;
-} */

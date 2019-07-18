@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
   box-sizing: border-box;
 }
@@ -33,6 +34,8 @@ body {
   background-color: #f4f1ec;
 
  }
+
+/* for desktop resolutions */
 
  @media only screen and (min-width: 1024px) {
 
