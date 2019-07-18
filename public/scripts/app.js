@@ -128,13 +128,14 @@ $('document').ready(function() {
     let formLength = $(event.target).find('textarea').val().length
     
     if (formLength <= 0) {
-      alert('yo tweet is empty');
+      $('#errortext').text("Your tweet is empty...");
     } else if (formLength > 140) {
       
-      alert('that tweet is too big')
+      $('#errortext').text("That tweet too big");
     } else {
       
       $.post("/tweets", formText).then(() => {
+        $('#errortext').text("")
         $('textarea').val('');
         $('#character-counter').text('140');
         refreshTweets();

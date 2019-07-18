@@ -28,8 +28,10 @@
 main > div:first-child {
   display: flex;
   width: 100%;
-  background-color: red;
-  justify-content: center
+  border-color: red;
+  border-style: groove;
+  justify-content: center;
+  
   
 }
 
