@@ -4,52 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
-/* <article class="tweet-box">
-        
-        <header>
-
-          <div class="tweeter-handle">@SirIsaac</div>
-
-          <img class="profile-pic" src="images/isaac.png">
-
-          <div class="username">Newton</div>
-
-        </header>
-        <div class="clear"></div>
-        <p class="tweet-content">If I have seen further it is by standing on the shoulders of giants.</p>
-
-
-        <footer>
-          <p class="timestamp">timestamp</p>
-          <img class="fakeicon" src="images/fakeicons.png"
-        </footer>
-
-      </article> */
+// The below function (createTweetElement) creates Tweets from information supplied by the server
 
 const createTweetElement = function(obj) {
   // Creating elements
@@ -57,7 +12,7 @@ const createTweetElement = function(obj) {
   let $header = $('<header>');
   let $tweeterHandle = $('<div>');
   let $profilePic = $('<img>');
-  let $username = $('<div>')
+  let $username = $('<div>');
   let $clear = $('<div>');
   let $tweetContent = $('<p>');
   let $footer = $('<footer>');
@@ -76,11 +31,11 @@ const createTweetElement = function(obj) {
 
   // Adding content to the elements
   $tweeterHandle.text(obj.user.handle);
-  $profilePic.attr('src', obj['user'].avatars)
+  $profilePic.attr('src', obj['user'].avatars);
   $username.text(obj.user.name);
   $tweetContent.text(obj.content.text);
   $timeStamp.text(new Date(obj.created_at));
-  $fakeIcons.attr('src', 'images/fakeicons.png')
+  $fakeIcons.attr('src', 'images/fakeicons.png');
 
   // Build the element
   $header.append($tweeterHandle).append($profilePic).append($username);
@@ -92,71 +47,79 @@ const createTweetElement = function(obj) {
   return $tweetBox;
 };
 
+// Renders tweets to then post on the website
 const renderTweets = function(tweets) {
-    for (tweet of tweets) {
-      $('.tweetcontainer').prepend(createTweetElement(tweet));
-    }
+  for (let tweet of tweets) {
+    $('.tweetcontainer').prepend(createTweetElement(tweet));
+  }
 };
 
-
-const loadTweets = function () {
+// Makes a get request to /tweets and then renders the tweets
+const loadTweets = function() {
   $.get('/tweets', function(data) {
     //console.log(data);
     renderTweets(data);
-  })
-}
-// const loadTweets = function() {
-//   $.get("/tweets").done(function(tweets) {
-//     renderTweets(tweets);
-//   });
-// };
-const refreshTweets = function () {
+  });
+};
+
+// Makes a get request to /tweets, but only renders the most recent tweet
+const refreshTweets = function() {
   $.get('/tweets').done(function(data) {
     let tweetToRender = [];
-    tweetToRender.push(data[data.length-1])
-    //console.log('data', data)
-    //console.log('tweetToRender', tweetToRender);
+    tweetToRender.push(data[data.length - 1]);
     renderTweets(tweetToRender);
-  })
-}
+  });
+};
+
 
 $('document').ready(function() {
-
+  // as soon as page is ready loads tweets
   loadTweets();
 
+  
   const $tweetform = $('.new-tweet-form');
-  $tweetform.on('submit', function (event) {
-
+  // Prevent default submit behaviour of .new-tweet-form
+  $tweetform.on('submit', function(event) {
     event.preventDefault();
+
+    // prepares the input to be sent to the server
     let formText = $(event.target).serialize();
-    let formLength = $(event.target).find('textarea').val().length
+    // allows for the length of the tweet to be validated
+    let formLength = $(event.target).find('textarea').val().length;
     
+    // validation that tweet has characters and error generation
     if (formLength <= 0) {
       $('#errortext').text("Your tweet is empty...");
-      $( "#error-box" ).addClass('error-box').slideDown( "slow", function() {
+      $("#error-box").addClass('error-box').slideDown("slow", function() {
       });
+
+    // validation that tweet does not exceed cap of 140 characters and error generation
     } else if (formLength > 140) {
-      
-      $('#errortext').text("That tweet too big");
-        $( "#error-box" ).addClass('error-box').slideDown( "slow", function() {
-        });
+      $('#errortext').text("It's a TWEET not a novel!! lol");
+      $("#error-box").addClass('error-box').slideDown("slow", function() {
+      });
+
+    // validation passed tweet sent to database
     } else {
-      
       $.post("/tweets", formText).then(() => {
-        
-        $('#error-box').removeClass('error-box').slideUp('fast', function() {})
+    
+        // after tweet sent to database clears any possible errors
+        $('#error-box').removeClass('error-box').slideUp('fast', function() {});
         $('#errortext').text('');
+        // clears textbox for new tweets
         $('textarea').val('');
+        // resets character counter
         $('#character-counter').text('140');
+        // adds latest tweet to feed
         refreshTweets();
-      })
+      });
     }
-  })
+  });
   
   $(".new-tweet").hide();
-
-  $( "#clickhere" ).click(function() {
-    $( ".new-tweet" ).slideToggle( "slow", function() {
+  // toggle function for new-tweet
+  $("#clickhere").click(function() {
+    $(".new-tweet").slideToggle("slow", function() {
     });
   });
 
