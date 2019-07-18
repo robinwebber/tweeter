@@ -9,10 +9,9 @@
 
 .tweet-box {
   border-style: solid;
-
 }
 
-.tweeter-handle {
+header > div {
   float: right;
   padding-top: 10px;
   padding-right: 10px;
@@ -22,11 +21,8 @@
 .tweet-box:hover {
   box-shadow: 10px 10px 5px lightgray;
   color: #545149;
-  font-weight: bold;
-  
-
+  text-shadow: 0px 0px 2px;
 }
-
 
 .profile-pic {
   float: left;
