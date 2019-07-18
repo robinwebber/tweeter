@@ -4,11 +4,13 @@
 
 .tweet-box header {
   padding-bottom: 5px;
+  
   /* background-color: lightcoral; */
 }
 
 .tweet-box {
   border-style: solid;
+  margin-bottom: 1rem;
 }
 
 header > div:first-child {
@@ -54,9 +56,18 @@ header > div:first-child {
 
 .tweet-box footer {
   border-top: 4px #545149 solid;
-  /* background-color: lightgreen; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .tweet-content {
   padding-left: 10px;
+}
+
+.fakeicon {
+  padding-right: 10px;
+  max-height: 30px;
+  max-width: auto;
+  margin-top: 10px;
 }

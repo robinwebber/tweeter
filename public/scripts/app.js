@@ -46,6 +46,7 @@
 
         <footer>
           <p class="timestamp">timestamp</p>
+          <img class="fakeicon" src="images/fakeicons.png"
         </footer>
 
       </article> */
@@ -61,6 +62,7 @@ const createTweetElement = function(obj) {
   let $tweetContent = $('<p>');
   let $footer = $('<footer>');
   let $timeStamp = $('<p>');
+  let $fakeIcons = $('<img>');
 
   // Assigning classes to elements
   $tweetBox.addClass('tweet-box');
@@ -70,6 +72,7 @@ const createTweetElement = function(obj) {
   $clear.addClass('clear');
   $tweetContent.addClass('tweet-content');
   $timeStamp.addClass('timestamp');
+  $fakeIcons.addClass('fakeicon');
 
   // Adding content to the elements
   $tweeterHandle.text(obj.user.handle);
@@ -77,11 +80,12 @@ const createTweetElement = function(obj) {
   $username.text(obj.user.name);
   $tweetContent.text(obj.content.text);
   $timeStamp.text(new Date(obj.created_at));
+  $fakeIcons.attr('src', 'images/fakeicons.png')
 
   // Build the element
   $header.append($tweeterHandle).append($profilePic).append($username);
   $tweetBox.append($header).append($clear).append($tweetContent);
-  $footer.append($timeStamp);
+  $footer.append($timeStamp).append($fakeIcons);
   $tweetBox.append($footer);
 
   // Return the build
@@ -129,13 +133,19 @@ $('document').ready(function() {
     
     if (formLength <= 0) {
       $('#errortext').text("Your tweet is empty...");
+      $( "#error-box" ).addClass('error-box').slideDown( "slow", function() {
+      });
     } else if (formLength > 140) {
       
       $('#errortext').text("That tweet too big");
+        $( "#error-box" ).addClass('error-box').slideDown( "slow", function() {
+        });
     } else {
       
       $.post("/tweets", formText).then(() => {
-        $('#errortext').text("")
+        
+        $('#error-box').removeClass('error-box').slideUp('fast', function() {})
+        $('#errortext').text('');
         $('textarea').val('');
         $('#character-counter').text('140');
         refreshTweets();

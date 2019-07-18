@@ -2,6 +2,7 @@
   width: 100%;
   margin: 0 auto;
   padding-bottom: 10px;
+  
 }
 
 #submit-tweet-button{
@@ -25,14 +26,15 @@
  text-align: left;
 }
 
-main > div:first-child {
+#error-box {
   display: flex;
-  width: 100%;
-  border-color: red;
-  border-style: groove;
   justify-content: center;
-  
-  
+  width: 100%;
+}
+
+.error-box {
+  border: 1px solid red;
+
 }
 
 .has-error {
