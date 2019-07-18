@@ -139,16 +139,16 @@ $('document').ready(function() {
         $('textarea').val('');
         $('#character-counter').text('140');
         refreshTweets();
-
       })
-
-
-      
     }
-    //console.log(formText);
   })
   
-  //renderTweets(data);
+  $( "#clickhere" ).click(function() {
+    $( ".new-tweet" ).slideToggle( "slow", function() {
+      // Animation complete.
+    });
+  });
+
 });
 
 
