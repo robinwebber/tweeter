@@ -55,7 +55,7 @@ const createTweetElement = function(obj) {
   let $tweetBox = $('<article>');
   let $header = $('<header>');
   let $tweeterHandle = $('<div>');
-  let $profilePic = $(`<img>`);
+  let $profilePic = $('<img>');
   let $username = $('<div>')
   let $clear = $('<div>');
   let $tweetContent = $('<p>');
@@ -73,11 +73,10 @@ const createTweetElement = function(obj) {
 
   // Adding content to the elements
   $tweeterHandle.text(obj.user.handle);
-  $profilePic.attr(`src`, obj['user'].avatars)
+  $profilePic.attr('src', obj['user'].avatars)
   $username.text(obj.user.name);
   $tweetContent.text(obj.content.text);
   $timeStamp.text(new Date(obj.created_at));
-  $footer.text(obj.created_at);
 
   // Build the element
   $header.append($tweeterHandle).append($profilePic).append($username);
@@ -145,7 +144,6 @@ $('document').ready(function() {
   
   $( "#clickhere" ).click(function() {
     $( ".new-tweet" ).slideToggle( "slow", function() {
-      // Animation complete.
     });
   });
 

@@ -11,11 +11,16 @@
   border-style: solid;
 }
 
-header > div {
+header > div:first-child {
   float: right;
   padding-top: 10px;
   padding-right: 10px;
   color: transparent;
+}
+
+.tweet-box:hover div {
+  color: #545149;
+  text-shadow: 0px 0px 2px;
 }
 
 .tweet-box:hover {
