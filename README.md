@@ -23,12 +23,12 @@ Fully functioning character counter that changes colour to indicate the characte
 
 ## Screenshots
 
-!["Screenshot of desktop home page"](https://github.com/robinwebber/tweeter/blob/master/docs/desktopHome.png?raw=true)
-[Screenshot of compose tweet box on desktop](https://github.com/robinwebber/tweeter/blob/master/docs/desktopComposeTweetDown.png?raw=true)
-[Screenshot of mobile home page](https://github.com/robinwebber/tweeter/blob/master/docs/mobileHome.png?raw=true)
-[Screenshot of compose tweet box on mobile](https://github.com/robinwebber/tweeter/blob/master/docs/mobileComposeTweetDown.png?raw=true)
-[Screenshot of empty tweet error](https://github.com/robinwebber/tweeter/blob/master/docs/emptyTweetError.png?raw=true)
-[Screenshot of big tweet error](https://github.com/robinwebber/tweeter/blob/master/docs/bigTweetError.png?raw=true)
+![Screenshot of desktop home page](https://github.com/robinwebber/tweeter/blob/master/docs/desktopHome.png?raw=true)
+![Screenshot of compose tweet box on desktop](https://github.com/robinwebber/tweeter/blob/master/docs/desktopComposeTweetDown.png?raw=true)
+![Screenshot of mobile home page](https://github.com/robinwebber/tweeter/blob/master/docs/mobileHome.png?raw=true)
+![Screenshot of compose tweet box on mobile](https://github.com/robinwebber/tweeter/blob/master/docs/mobileComposeTweetDown.png?raw=true)
+![Screenshot of empty tweet error](https://github.com/robinwebber/tweeter/blob/master/docs/emptyTweetError.png?raw=true)
+![Screenshot of big tweet error](https://github.com/robinwebber/tweeter/blob/master/docs/bigTweetError.png?raw=true)
 
 ## Dependencies
 
