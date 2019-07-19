@@ -20,6 +20,7 @@ header > div:first-child {
   color: transparent;
 }
 
+/* Below allows for the userhandle to appear when the box is hovered over */
 .tweet-box:hover div {
   color: #545149;
   text-shadow: 0px 0px 2px;
